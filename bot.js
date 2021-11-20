@@ -1,4 +1,4 @@
-//农民世界机器人V1.0
+//农民世界机器人V1.1
 (async () => {
   const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
   mapBtn.click();
@@ -83,4 +83,4 @@
     }
   }
 })();
-//免费维护QQ群：104168874
+//维护QQ群：104168874
