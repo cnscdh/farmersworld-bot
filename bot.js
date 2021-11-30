@@ -1,11 +1,30 @@
-//农民世界机器人V1.1
+//农民世界机器人V1.2
 (async () => {
+  // 可用的地图
+  // 1 — 矿业
+  // 2 — 鸡舍
+  // 3 — 种地
+  // 4 — 牛舍
+  const availableMaps = [1, 2, 3, 4];
+  // 移动到下一个地图之间的延迟（5秒）
+  const delayNextMap = 5 * 1000;
+  // 地图选择后的延迟（5秒）
+  const delayAfterMapSelect = 5 * 1000;
+  // 找到后的延迟（1秒）
+  const delayAfterMine = 1 * 1000;
+  // 维修开始前的延迟（10秒）
+  const delayBeforeRepair = 10 * 1000;
+  // 维修开始后延迟（1秒）
+  const delayAfterRepair = 1 * 1000;
+
   const mapBtn = document.querySelector(".navbar-group--icon[alt='Map']");
   mapBtn.click();
 
   while (1) {
     for (let mapId = 0; mapId < 4; ++mapId) {
-      await new Promise((res) => setTimeout(res, 5e3));
+      if (!availableMaps.includes(mapId + 1)) continue;
+
+      await new Promise((res) => setTimeout(res, delayNextMap));
 
       const map = document.querySelectorAll(".map-container-bg")[mapId];
 
@@ -13,7 +32,7 @@
 
       map.click();
 
-      await new Promise((res) => setTimeout(res, 5e3));
+      await new Promise((res) => setTimeout(res, delayAfterMapSelect));
 
       for (const [indexItem, item] of document
         .querySelectorAll(".vertical-carousel-container img")
@@ -34,13 +53,13 @@
         ) {
           buttonMine.click();
 
-          await new Promise((res) => setTimeout(res, 1e3));
+          await new Promise((res) => setTimeout(res, delayAfterMine));
 
-          // If map with mining
+          // 选择地图并检查
           if (mapId === 0) {
-            await new Promise((res) => setTimeout(res, 1e4));
+            await new Promise((res) => setTimeout(res, delayBeforeRepair));
 
-            // Repair instruments
+            // 维修工具
             const buttonRepair = document.querySelectorAll(
               ".info-section .plain-button"
             )[1];
@@ -52,12 +71,10 @@
               quality < 0.5
             ) {
               buttonRepair.click();
-              await new Promise((res) => setTimeout(res, 1e3));
+              await new Promise((res) => setTimeout(res, delayAfterRepair));
             }
           }
-
-          await new Promise((res) => setTimeout(res, 1e4));
-
+            // 补充能量（小于200能量添加100能量）可调整数值
           const currentEnergy = +document.querySelectorAll(
             ".resource-number div"
           )[3].innerText;
