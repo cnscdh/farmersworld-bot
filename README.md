@@ -33,7 +33,7 @@
 
 ### WAX捐赠
 
-**gvikq.c.wam**
+**fwwcnscdhcom**没有.wam
 
 ### 微信赞赏
 
