@@ -31,9 +31,9 @@
 - 添加了选择要执行的地图功能，默认执行全部地图
 - 改进了游戏中可能会暂停的Bug
 
-### WAX捐赠
+### WAX捐赠，注意：没有.wam
 
-**fwwcnscdhcom**没有.wam
+**fwwcnscdhcom**
 
 ### 微信赞赏
 
